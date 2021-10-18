@@ -3,11 +3,3 @@ svg text {
   font-family: 'Jost';
   font-size: 70px;
 }
-
-.body__form {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  flex-wrap: wrap;
-  align-items: center;
-}
