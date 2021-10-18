@@ -9,19 +9,17 @@
   <title>Document</title>
 </head>
 <body>
-<form action="form.html" onsubmit='authorization()'>
-  <div class="body__form">
+<form
+  action="certificate.html"
+  onsubmit="openCertificate()">
+  <div>
     <div>
-      <span>Логин</span>
-      <input type="text"/>
+      <span>Фио Ученика</span>
+      <input id="fio_input" type="text">
 
     </div>
     <div>
-      <span>Пароль</span>
-      <input type="text"/>
-    </div>
-    <div>
-      <button type="submit">Авторизоваться</button>
+      <button type="submit">Получить сертификат</button>
     </div>
   </div>
 </form>
