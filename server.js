@@ -1,17 +1,10 @@
-const http = require('http');
-const open = require('open');
-const fs = require('fs');
-fs.readFile('index.html', function (err, html) {
-  if (err) {
-    throw err;
-  }
-  http.createServer(function (request, response) {
-    response.writeHeader(200, {"Content-Type": "text/html"});
-    response.write(html);
-    response.end();
-  }).listen(8000);
+const express = require('express');
+const app = express();
+const path = require('path');
+const port = 3003;
+
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname + '/index.html'));
 });
 
-(async () => {
-  await open('index.html', {"wait": true });
-})();
+app.listen(port, () => console.log(`url-shortener listening on port ${port}!`));
