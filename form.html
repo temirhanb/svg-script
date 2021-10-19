@@ -38,24 +38,28 @@
       source = '<?xml version="1.0" standalone="no"?>\r\n' + source;
 
         //convert svg source to URI data scheme.
-      var url = "data:image/svg+xml;charset=utf-8,"+encodeURIComponent(source);
+      const url = "data:image/svg+xml;charset=utf-8,"+encodeURIComponent(source);
 
-      //set url value to a element's href attribute.
+  const canvas = document.createElement("canvas");
+        context = canvas.getContext("2d");
+        canvas.setAttribute('width', 2480);
+        canvas.setAttribute('height', 3508);
 
-       const installFiles = (url, filename) => {
-        fetch(url).then(function (t) {
-        return t.blob().then((b) => {
-        const a = document.createElement('a');
+  const image = new Image;
 
-        a.href = URL.createObjectURL(b);
+  image.src = url;
 
-        a.setAttribute('download', filename);
-
-        a.click();
-        });
-       });
-       };
-        installFiles(url,'certificate')
+  image.onload = function () {
+      context.drawImage(image, 0, 0);
+      const canvasdata = canvas.toDataURL("image/png");
+      const a = document.createElement("a");
+      a.textContent = "save";
+      a.download = "export_" + ".png";
+      a.href = canvasdata;
+      document.body.appendChild(a);
+      a.setAttribute('download', 'certificate');
+      a.click();
+  };
     }
 
     const openCertificate = async (props) => {
