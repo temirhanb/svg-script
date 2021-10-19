@@ -2,26 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="./src/style/index.css">
+  <link rel="stylesheet" href="src/style/index.css">
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
 <body>
-<form action="form.html" onsubmit='authorization()'>
+<form
+  onsubmit='event.stopPropagation(); authorization(event);return false;'
+>
   <div class="body__form">
-    <div>
-      <span>Логин</span>
-      <input type="text"/>
-
+    <div class="body__form_input">
+      <span>Email:</span>
+      <input id="login_id" type="text"/>
     </div>
-    <div>
-      <span>Пароль</span>
-      <input type="text"/>
+    <div class="body__form_input">
+      <span>Пароль:</span>
+      <input id="password_id" type="text"/>
     </div>
     <div>
       <button type="submit">Авторизоваться</button>
+    </div>
+    <div>
+      <p id="error" class="error__message"></p>
     </div>
   </div>
 </form>

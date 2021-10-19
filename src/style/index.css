@@ -3,3 +3,27 @@ svg text {
   font-family: 'Jost';
   font-size: 70px;
 }
+
+.body__form {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.body__form_input {
+  width: 230px;
+  margin: 0 0 10px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.body__form_input span {
+  width: 60px;
+}
+
+.error__message {
+  color: red;
+}
