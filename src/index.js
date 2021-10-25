@@ -1,5 +1,3 @@
-
-
 const authorization = async (props) => {
   props.stopPropagation()
   const login = document.getElementById('login_id').value;
@@ -21,8 +19,10 @@ const authorization = async (props) => {
         login, password
       }) // body data type must match "Content-Type" header
     }).then((res) => {
-      if (res.ok) document.location.href = "form.html";
-      else {
+      if (res.ok) {
+        localStorage.setItem('userDetails', 'login')
+        document.location.href = "form.html"
+      } else {
         const error = document.getElementById('error')
         error.innerHTML = 'Что-то пошло не так'
       }
@@ -30,4 +30,11 @@ const authorization = async (props) => {
   } catch (err) {
     console.log(err)
   }
+}
+
+const checkAuth = () => {
+  if (localStorage.getItem('userDetails') === 'login') {
+    document.location.href = "form.html"
+  }
+  return false;
 }
